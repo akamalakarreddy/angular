@@ -1,0 +1,18 @@
+<table border="1" align="center">
+    <tr>
+        <th>NAME</th>
+        <th>CAPITAL</th>
+        <th>REGION</th>
+        <th>POPULATION</th>
+        <th>FLAG</th>
+    </tr>
+    <tr *ngFor="let x of result">
+        <td>{{x.name}}</td>
+        <td>{{x.capital}}</td>
+        <td>{{x.region}}</td>
+        <td>{{x.population}}</td>
+        <td><img width="100px" 
+                 height="50px"
+                 src="{{x.flag}}"></td>
+    </tr>
+</table>
