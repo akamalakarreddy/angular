@@ -1,0 +1,71 @@
+
+<button class="glyphicon glyphicon-plus 
+btn btn-success"
+(click)="insertRecord()"
+style="position: absolute;
+right: 0;
+padding: 10px;"></button>
+
+
+<table border="1"
+cellpadding="30px"
+cellspacing="30px"
+align="center"
+style="font-size: 20px;
+text-align: center;">
+<thead style="background-color: gray;">
+<tr>
+<th>P_ID</th>
+<th>P_NAME</th>
+<th>P_COST</th>
+<th>EDIT</th>
+<th>DELETE</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let x of result;let i=index">
+<td>{{x.p_id}}</td>
+<td>{{x.p_name}}</td>
+<td>{{x.p_cost}}</td>
+<td><button 
+  class="glyphicon glyphicon-edit"
+  (click)="openUpdateModal('edit',x)"></button></td>
+<td><button 
+ class="glyphicon glyphicon-trash"
+ (click)="deleteRecord(x.p_id)"></button></td>
+</tr>   
+</tbody>
+</table>
+
+<jw-modal id="edit">
+<h1>Edit</h1>
+<p>P_ID: <input type="number" 
+     [(ngModel)]="update_pid" /></p>
+<p>P_NAME: <input type="text" 
+     [(ngModel)]="update_pname" /></p>
+<p>P_COST: <input type="number" 
+     [(ngModel)]="update_pcost" /></p>
+
+<button (click)="closeUpdateModal('edit');">Update</button>  
+<button (click)="cancel('edit');">Cancel</button>
+</jw-modal>
+
+<jw-modal id="insert">
+<h1>Insert</h1>
+<p>P_ID: <input type="number" 
+     [(ngModel)]="insert_pid" /></p>
+<p>P_NAME: <input type="text" 
+     [(ngModel)]="insert_pname" /></p>
+<p>P_COST: <input type="number" 
+     [(ngModel)]="insert_pcost" /></p>
+
+<button (click)="insertR('insert',   
+              {'p_id':insert_pid,
+             'p_name':insert_pname,
+             'p_cost':insert_pcost});">Insert</button>  
+<button (click)="removeR('insert');">Cancel</button>
+</jw-modal>
+
+
+
+
